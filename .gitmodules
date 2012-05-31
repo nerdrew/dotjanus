@@ -1,0 +1,48 @@
+[submodule "gundo.vim"]
+	path = gundo.vim
+	url = https://github.com/sjl/gundo.vim.git
+[submodule "securemodelines"]
+	path = securemodelines
+	url = https://github.com/ciaranm/securemodelines.git
+[submodule "vim-surround"]
+	path = vim-surround
+	url = http://github.com/tpope/vim-surround.git
+[submodule "vim-repeat"]
+	path = vim-repeat
+	url = http://github.com/tpope/vim-repeat.git
+[submodule "vim-snipmate"]
+	path = vim-snipmate
+	url = https://github.com/garbas/vim-snipmate.git
+[submodule "snipmate-snippets"]
+	path = snipmate-snippets
+	url = git@github.com:nerdrew/snipmate-snippets.git
+[submodule "vim-yankstack"]
+	path = vim-yankstack
+	url = https://github.com/maxbrunsfeld/vim-yankstack.git
+[submodule "vim-textobj-rubyblock"]
+	path = vim-textobj-rubyblock
+	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+[submodule "Flex-Development-Support"]
+	path = Flex-Development-Support
+	url = https://github.com/vim-scripts/Flex-Development-Support.git
+[submodule "vim-textobj-user"]
+	path = vim-textobj-user
+	url = git://github.com/kana/vim-textobj-user.git
+[submodule "greplace.vim"]
+	path = greplace.vim
+	url = git://github.com/vim-scripts/greplace.vim.git
+[submodule "nginx-vim-syntax"]
+	path = nginx-vim-syntax
+	url = git://github.com/evanmiller/nginx-vim-syntax.git
+[submodule "vim-coffee-script"]
+	path = vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "Decho"]
+	path = Decho
+	url = git://github.com/vim-scripts/Decho.git
+[submodule "clang_complete"]
+	path = clang_complete
+	url = https://github.com/Rip-Rip/clang_complete.git
+[submodule "vim-align"]
+	path = vim-align
+	url = https://github.com/tsaleh/vim-align.git
