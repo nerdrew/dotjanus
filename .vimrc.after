@@ -68,6 +68,9 @@ map <unique> <leader># :call g:ToggleNuMode()<CR>
 map <leader>p <Plug>yankstack_substitute_older_paste
 map <leader>P <Plug>yankstack_substitute_newer_paste
 map <Leader>f :CommandT<CR>
+unmap <leader>fc
+unmap <leader>fef
+map <leader>gn <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 map <Leader>b :CommandTBuffer<CR>
 map <leader>t :TagbarToggle<CR>
 map <leader>d :BuffergatorToggle<CR>
