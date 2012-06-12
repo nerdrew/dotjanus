@@ -1,0 +1,150 @@
+if has("gui_running")
+  set guioptions-=T    " hide toolbar
+endif
+
+set guifont=Menlo:h11
+set showmatch       " show matching parentheses
+set hidden          " handle multiple buffers better
+set wildmenu        " better tab completion for files
+set wildmode=list:longest
+set wildignore=*.swp,*.bak,*.pyc,*.class
+set history=1000
+set ruler
+set backspace=indent,eol,start
+set copyindent
+"set listchars=tab:>\ ,trail:·,eol:$,nbsp:·,extends:>,precedes:<
+set listchars=tab:>\ ,trail:·,nbsp:·,extends:>,precedes:<
+set noswapfile
+
+if has('balloon_eval')
+  set noballooneval
+  set balloondelay=100000
+  setlocal balloonexpr=
+endif
+
+if has('autocmd')
+  autocmd filetype python set expandtab sw=4 ts=4 sts=4
+
+  " Show trailing whitepace and spaces before a tab:
+  "autocmd Syntax * syn match Error /\s\+$\| \+\ze\t/
+
+  " eruby doesn't correctly indent javascript w/o this
+  "autocmd BufRead,BufNewFile *.html.erb set filetype=javascript
+  "autocmd BufRead,BufNewFile *.html.erb set filetype=eruby.html
+  "autocmd BufRead,BufNewFile *.js.erb set filetype=eruby.javascript
+
+  autocmd BufRead,BufNewFile *.as set filetype=actionscript
+
+  " Remove trailing whitespace on save
+  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
+endif
+
+" Call yankstack BEFORE my keyboard remappings
+call yankstack#setup()
+"""""""""""""""""""""""""""""""""
+" Keyboard mappings
+"""""""""""""""""""""""""""""""""
+nnoremap / /\v
+vnoremap / /\v
+nnoremap Y y$
+nnoremap <C-e> 3<C-e>
+nnoremap <C-y> 3<C-y>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+cmap <C-A> <Home>
+cmap <C-F> <Right>
+cmap <C-B> <Left>
+cmap <Esc>b <S-Left>
+cmap <Esc>f <S-Right>
+map <D-t> :tabnew<CR>
+
+map <unique> <leader>w :set wrap!<CR>:set wrap?<CR>
+map <unique> <leader>g :GundoToggle<CR>
+map <leader><space> :nohls<cr>
+map <leader>l :set list!<CR>:set list?<cr>
+map <unique> <leader># :call g:ToggleNuMode()<CR>
+map <leader>p <Plug>yankstack_substitute_older_paste
+map <leader>P <Plug>yankstack_substitute_newer_paste
+map <Leader>f :CommandT<CR>
+map <Leader>b :CommandTBuffer<CR>
+map <leader>t :TagbarToggle<CR>
+map <leader>d :BuffergatorToggle<CR>
+
+" Plugin options
+let g:CommandTMatchWindowReverse=1
+"let g:buffergator_viewport_split_policy="B"
+let g:buffergator_split_size=0
+let g:buffergator_suppress_keymaps=1
+
+" From http://vim.wikia.com/wiki/Capture_ex_command_output
+" Captures ex command and puts it in a new tab
+function! TabMessage(cmd)
+  redir => message
+  silent execute a:cmd
+  redir END
+  tabnew
+  silent put=message
+  set nomodified
+endfunction
+command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
+
+" Set ts sts sw = num
+function! Tabs(num)
+  let &tabstop = a:num
+  let &shiftwidth = a:num
+  let &softtabstop = a:num
+endfunction
+command! -nargs=1 -complete=command Tabs call Tabs(<args>)
+
+function! g:ToggleNuMode()
+  if(&rnu == 1)
+    set nu
+  else
+    set rnu
+  endif
+endfunc
+
+function! SynStack()
+  let s:syn_stack = ''
+  for id in synstack(line("."), col("."))
+    let s:syn_stack = s:syn_stack . ' > ' . synIDattr(id, "name")
+  endfor
+  echo s:syn_stack
+  return s:syn_stack
+endfunction 
+
+command! ShowSynStack call ShowSynStack()
+function! ShowSynStack()
+  let g:old_statusline = &statusline
+  let g:old_laststatus = &laststatus
+  set statusline+=%{SynStack()}
+  set laststatus=2
+endfunction
+
+command! HideSynStack call HideSynStack()
+function! HideSynStack()
+  let &statusline=g:old_statusline
+  let &laststatus=g:old_laststatus
+endfunction
+
+command! -range -nargs=1 SendToCommand <line1>,<line2>call SendToCommand(<q-args>)
+function! SendToCommand(UserCommand) range
+  let SelectedLines = getline(a:firstline,a:lastline)
+  " Convert to a single string suitable for passing to the command
+  let ScriptInput = join(SelectedLines, "\n") . "\n"
+  " Run the command
+  echo system(a:UserCommand, ScriptInput)
+endfunction
+
+command! -range RunCommand <line1>,<line2>call RunCommand()
+fu! RunCommand() range
+  let RunCommandCursorPos = getpos(".")
+  let SelectedLines = getline(a:firstline,a:lastline)
+  " Convert to a single string suitable for passing to the command
+  let ScriptInput = join(SelectedLines, " ") . "\n"
+  echo system(ScriptInput)
+  call setpos(".", RunCommandCursorPos)
+endfu
+map <unique> <leader>! :RunCommand<CR>

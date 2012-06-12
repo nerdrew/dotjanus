@@ -43,6 +43,9 @@
 [submodule "clang_complete"]
 	path = clang_complete
 	url = https://github.com/Rip-Rip/clang_complete.git
-[submodule "vim-align"]
-	path = vim-align
-	url = https://github.com/tsaleh/vim-align.git
+[submodule "conque-term"]
+	path = conque-term
+	url = git://github.com/rosenfeld/conque-term.git
+[submodule "Command-T"]
+	path = Command-T
+	url = git://github.com/wincent/Command-T.git
