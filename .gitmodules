@@ -49,3 +49,6 @@
 [submodule "Command-T"]
 	path = Command-T
 	url = git://github.com/wincent/Command-T.git
+[submodule "vim-stylus"]
+	path = vim-stylus
+	url = git://github.com/wavded/vim-stylus.git

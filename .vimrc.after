@@ -7,7 +7,7 @@ set showmatch       " show matching parentheses
 set hidden          " handle multiple buffers better
 set wildmenu        " better tab completion for files
 set wildmode=list:longest
-set wildignore=*.swp,*.bak,*.pyc,*.class
+set wildignore=*.swp,*.bak,*.pyc,*.class,*.png,*.o,*.jpg
 set history=1000
 set ruler
 set backspace=indent,eol,start
@@ -16,10 +16,12 @@ set copyindent
 set listchars=tab:>\ ,trail:·,nbsp:·,extends:>,precedes:<
 set noswapfile
 
+set statusline+=%{SyntasticStatuslineFlag()}
+
 if has('balloon_eval')
-  set noballooneval
-  set balloondelay=100000
-  setlocal balloonexpr=
+  "set noballooneval
+  "set balloondelay=100000
+  "setlocal balloonexpr=
 endif
 
 if has('autocmd')
@@ -36,7 +38,7 @@ if has('autocmd')
   autocmd BufRead,BufNewFile *.as set filetype=actionscript
 
   " Remove trailing whitespace on save
-  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
+  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html,coffee} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
 endif
 
 " Call yankstack BEFORE my keyboard remappings
@@ -70,16 +72,19 @@ map <leader>P <Plug>yankstack_substitute_newer_paste
 map <Leader>f :CommandT<CR>
 unmap <leader>fc
 unmap <leader>fef
+unmap <leader>tw
 map <leader>gn <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-map <Leader>b :CommandTBuffer<CR>
+map <Leader>bb :CommandTBuffer<CR>
 map <leader>t :TagbarToggle<CR>
-map <leader>d :BuffergatorToggle<CR>
+"map <leader>d :BuffergatorToggle<CR>
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
 "let g:buffergator_viewport_split_policy="B"
-let g:buffergator_split_size=0
-let g:buffergator_suppress_keymaps=1
+"let g:buffergator_split_size=0
+"let g:buffergator_suppress_keymaps=1
+
+let g:syntastic_quiet_warnings=1
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
