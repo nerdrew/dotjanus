@@ -52,3 +52,6 @@
 [submodule "vim-stylus"]
 	path = vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
+[submodule "vim-ruby-conque"]
+	path = vim-ruby-conque
+	url = git://github.com/skwp/vim-ruby-conque.git
