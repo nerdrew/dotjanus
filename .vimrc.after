@@ -98,6 +98,16 @@ function! TabMessage(cmd)
 endfunction
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
+function! XMLlint()
+  execute "% !xmllint --format --recover -"
+endfunction
+command! -complete=command XMLlint call XMLlint()
+
+function! JSONlint()
+  execute "% !python -m json.tool"
+endfunction
+command! -complete=command JSONlint call JSONlint()
+
 " Set ts sts sw = num
 function! Tabs(num)
   let &tabstop = a:num
