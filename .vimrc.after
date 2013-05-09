@@ -19,13 +19,16 @@ set noswapfile
 set statusline+=%{SyntasticStatuslineFlag()}
 
 if has('balloon_eval')
-  "set noballooneval
-  "set balloondelay=100000
-  "setlocal balloonexpr=
+  set noballooneval
+  set balloondelay=100000
+  setlocal balloonexpr=
 endif
 
 if has('autocmd')
   autocmd filetype python set expandtab sw=4 ts=4 sts=4
+  autocmd filetype c set sw=4 ts=8 nolist
+  autocmd filetype vimwiki set textwidth=0
+  autocmd filetype markdown set textwidth=0
 
   " Show trailing whitepace and spaces before a tab:
   "autocmd Syntax * syn match Error /\s\+$\| \+\ze\t/
@@ -38,7 +41,7 @@ if has('autocmd')
   autocmd BufRead,BufNewFile *.as set filetype=actionscript
 
   " Remove trailing whitespace on save
-  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html,coffee} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
+  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html,coffee,json} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
 endif
 
 " Call yankstack BEFORE my keyboard remappings
@@ -77,6 +80,13 @@ map <leader>gn <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 map <Leader>bb :CommandTBuffer<CR>
 map <leader>t :TagbarToggle<CR>
 "map <leader>d :BuffergatorToggle<CR>
+unmap <leader>r
+unmap <leader>R
+map <unique> <Leader>r :call vroom#RunTestFile({'options': '--drb --fail-fast --no-color'})<CR>
+map <unique> <Leader>R :call vroom#RunNearestTest({'options': '--drb --fail-fast --no-color'})<CR>
+map <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
+map <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
+map <unique> <Leader>rc :CloseSingleConque<CR>
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
@@ -85,6 +95,11 @@ let g:CommandTMatchWindowReverse=1
 "let g:buffergator_suppress_keymaps=1
 
 let g:syntastic_quiet_warnings=1
+"let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['c'] }
+
+
+" Use ag instead of ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
@@ -98,15 +113,18 @@ function! TabMessage(cmd)
 endfunction
 command! -nargs=+ -complete=command TabMessage call TabMessage(<q-args>)
 
-function! XMLlint()
-  execute "% !xmllint --format --recover -"
-endfunction
-command! -complete=command XMLlint call XMLlint()
 
-function! JSONlint()
-  execute "% !python -m json.tool"
+" Linters
+function! XMLlint(line1, line2)
+  execute a:line1.",".a:line2." !xmllint --format --recover -"
 endfunction
-command! -complete=command JSONlint call JSONlint()
+command! -range=% -complete=command XMLlint call XMLlint(<line1>, <line2>)
+
+function! JSONlint(line1, line2)
+  execute a:line1.",".a:line2." !json_reformat"
+endfunction
+command! -range=% -complete=command JSONlint call JSONlint(<line1>, <line2>)
+
 
 " Set ts sts sw = num
 function! Tabs(num)
