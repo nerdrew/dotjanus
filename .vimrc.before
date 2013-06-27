@@ -1,14 +1,13 @@
+call janus#disable_plugin('ack')
 call janus#disable_plugin('buffergator')
 call janus#disable_plugin('ctrlp')
-call janus#disable_plugin('snipmate-snippets')
-call janus#disable_plugin('vim-snippets')
-call janus#disable_plugin('snipmate')
-call janus#disable_plugin('vim-addon-mw-utils')
-call janus#disable_plugin('tlib')
-"call janus#disable_plugin('rspec')
-call janus#disable_plugin('ack')
-call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('dispatch')
+call janus#disable_plugin('tlib')
+call janus#disable_plugin('snipmate')
+call janus#disable_plugin('vim-snippets')
+call janus#disable_plugin('vim-addon-mw-utils')
+"call janus#disable_plugin('rspec')
+call janus#disable_plugin('vimwiki')
 
 " Plugin options that need to be loaded before the plugins are
 " remember localvimrc allows
