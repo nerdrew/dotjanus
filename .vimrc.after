@@ -21,14 +21,13 @@ set statusline+=%{SyntasticStatuslineFlag()}
 if has('balloon_eval')
   set noballooneval
   set balloondelay=100000
-  setlocal balloonexpr=
+  autocmd FileType ruby setlocal balloonexpr=
 endif
 
 if has('autocmd')
   autocmd filetype python set expandtab sw=4 ts=4 sts=4
   autocmd filetype c set sw=4 ts=8 nolist
-  autocmd filetype vimwiki set textwidth=0
-  autocmd filetype markdown set textwidth=0
+  autocmd filetype vimwiki,markdown,txt set textwidth=0
 
   " Show trailing whitepace and spaces before a tab:
   "autocmd Syntax * syn match Error /\s\+$\| \+\ze\t/
@@ -82,11 +81,15 @@ map <leader>t :TagbarToggle<CR>
 "map <leader>d :BuffergatorToggle<CR>
 unmap <leader>r
 unmap <leader>R
-map <unique> <Leader>r :call vroom#RunTestFile({'options': '--drb --fail-fast --no-color'})<CR>
-map <unique> <Leader>R :call vroom#RunNearestTest({'options': '--drb --fail-fast --no-color'})<CR>
+map <unique> <Leader>r :call vroom#RunTestFile({'options': '--no-color --fail-fast'})<CR>
+map <unique> <Leader>R :call vroom#RunNearestTest({'options': '--no-color --fail-fast'})<CR>
+map <unique> <Leader>q :call vroom#RunTestFile({'options': '--no-color', 'quickfix': 1})<CR>
+map <unique> <Leader>Q :call vroom#RunNearestTest({'options': '--no-color', 'quickfix': 1})<CR>
 map <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
 map <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
 map <unique> <Leader>rc :CloseSingleConque<CR>
+map <C-@> @@
+
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
@@ -95,11 +98,12 @@ let g:CommandTMatchWindowReverse=1
 "let g:buffergator_suppress_keymaps=1
 
 let g:syntastic_quiet_warnings=1
+let g:syntastic_ruby_exec="default-ruby"
 "let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['c'] }
 
+" disable ruby balloon eval
+let g:ruby_enable_balloons=0
 
-" Use ag instead of ack
-let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab

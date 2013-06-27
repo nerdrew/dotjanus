@@ -58,3 +58,6 @@
 [submodule "vim-markdown"]
 	path = vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+[submodule "ag.vim"]
+	path = ag.vim
+	url = git://github.com/rking/ag.vim.git
