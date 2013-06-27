@@ -10,12 +10,6 @@
 [submodule "vim-repeat"]
 	path = vim-repeat
 	url = http://github.com/tpope/vim-repeat.git
-[submodule "vim-snipmate"]
-	path = vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-[submodule "snipmate-snippets"]
-	path = snipmate-snippets
-	url = git@github.com:nerdrew/snipmate-snippets.git
 [submodule "vim-yankstack"]
 	path = vim-yankstack
 	url = https://github.com/maxbrunsfeld/vim-yankstack.git
