@@ -81,7 +81,7 @@ map <leader>t :TagbarToggle<CR>
 "map <leader>d :BuffergatorToggle<CR>
 unmap <leader>r
 unmap <leader>R
-map <unique> <Leader>r :call vroom#RunTestFile({'options': '--no-color --fail-fast'})<CR>
+map <unique> <Leader>r :call vroom#RunTestFile({'options': '--no-color'})<CR>
 map <unique> <Leader>R :call vroom#RunNearestTest({'options': '--no-color --fail-fast'})<CR>
 map <unique> <Leader>q :call vroom#RunTestFile({'options': '--no-color', 'quickfix': 1})<CR>
 map <unique> <Leader>Q :call vroom#RunNearestTest({'options': '--no-color', 'quickfix': 1})<CR>
@@ -103,7 +103,6 @@ let g:syntastic_ruby_exec="default-ruby"
 
 " disable ruby balloon eval
 let g:ruby_enable_balloons=0
-
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
