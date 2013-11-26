@@ -28,9 +28,6 @@
 [submodule "nginx-vim-syntax"]
 	path = nginx-vim-syntax
 	url = git://github.com/evanmiller/nginx-vim-syntax.git
-[submodule "vim-coffee-script"]
-	path = vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
 [submodule "Decho"]
 	path = Decho
 	url = git://github.com/vim-scripts/Decho.git
@@ -58,3 +55,6 @@
 [submodule "vim-vroom"]
 	path = vim-vroom
 	url = git@github.com:nerdrew/vim-vroom.git
+[submodule "dart-vim-plugin"]
+	path = dart-vim-plugin
+	url = git@github.com:dart-lang/dart-vim-plugin.git

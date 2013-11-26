@@ -104,6 +104,8 @@ let g:syntastic_ruby_exec="default-ruby"
 " disable ruby balloon eval
 let g:ruby_enable_balloons=0
 
+let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib"
+
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
 function! TabMessage(cmd)
