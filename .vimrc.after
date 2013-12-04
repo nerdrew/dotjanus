@@ -79,12 +79,6 @@ map <leader>gn <ESC>/\v^[<=>]{7}( .*\|$)<CR>
 map <Leader>bb :CommandTBuffer<CR>
 map <leader>t :TagbarToggle<CR>
 "map <leader>d :BuffergatorToggle<CR>
-unmap <leader>r
-unmap <leader>R
-map <unique> <Leader>r :call vroom#RunTestFile({'options': '--no-color'})<CR>
-map <unique> <Leader>R :call vroom#RunNearestTest({'options': '--no-color --fail-fast'})<CR>
-map <unique> <Leader>q :call vroom#RunTestFile({'options': '--no-color', 'quickfix': 1})<CR>
-map <unique> <Leader>Q :call vroom#RunNearestTest({'options': '--no-color', 'quickfix': 1})<CR>
 map <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
 map <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
 map <unique> <Leader>rc :CloseSingleConque<CR>
