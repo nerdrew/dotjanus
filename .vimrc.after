@@ -1,5 +1,7 @@
 if has("gui_running")
   set guioptions-=T    " hide toolbar
+  set guioptions-=r    " hide scrollbars on right
+  set guioptions-=L    " hide scrollbars on left
 endif
 
 set guifont=Menlo:h11
@@ -15,6 +17,8 @@ set copyindent
 "set listchars=tab:>\ ,trail:·,eol:$,nbsp:·,extends:>,precedes:<
 set listchars=tab:>\ ,trail:·,nbsp:·,extends:>,precedes:<
 set noswapfile
+set ssop-=options
+set ssop-=folds
 
 set statusline+=%{SyntasticStatuslineFlag()}
 
@@ -68,7 +72,6 @@ map <unique> <leader>w :set wrap!<CR>:set wrap?<CR>
 map <unique> <leader>g :GundoToggle<CR>
 map <leader><space> :nohls<cr>
 map <leader>l :set list!<CR>:set list?<cr>
-map <unique> <leader># :call g:ToggleNuMode()<CR>
 map <leader>p <Plug>yankstack_substitute_older_paste
 map <leader>P <Plug>yankstack_substitute_newer_paste
 map <Leader>f :CommandT<CR>
@@ -87,6 +90,7 @@ map <C-@> @@
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
+let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*,**/packages/*"
 "let g:buffergator_viewport_split_policy="B"
 "let g:buffergator_split_size=0
 "let g:buffergator_suppress_keymaps=1
@@ -100,6 +104,8 @@ let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not r
 let g:ruby_enable_balloons=0
 
 let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib"
+
+let g:vroom_use_binstubs=1
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
@@ -134,13 +140,19 @@ function! Tabs(num)
 endfunction
 command! -nargs=1 -complete=command Tabs call Tabs(<args>)
 
-function! g:ToggleNuMode()
-  if(&rnu == 1)
-    set nu
-  else
-    set rnu
-  endif
-endfunc
+function! LargeFile()
+  filetype off
+  set filetype=text
+  set noincsearch
+endfunction
+command! -complete=command LargeFile call LargeFile()
+
+function! LargeFileOff()
+  filetype on
+  filetype detect
+  set incsearch
+endfunction
+command! -complete=command LargeFileOff call LargeFileOff()
 
 function! SynStack()
   let s:syn_stack = ''
@@ -149,7 +161,7 @@ function! SynStack()
   endfor
   echo s:syn_stack
   return s:syn_stack
-endfunction 
+endfunction
 
 command! ShowSynStack call ShowSynStack()
 function! ShowSynStack()
