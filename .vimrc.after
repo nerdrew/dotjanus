@@ -163,21 +163,20 @@ function! SynStack()
   return s:syn_stack
 endfunction
 
-command! ShowSynStack call ShowSynStack()
 function! ShowSynStack()
   let g:old_statusline = &statusline
   let g:old_laststatus = &laststatus
   set statusline+=%{SynStack()}
   set laststatus=2
 endfunction
+command! -complete=command ShowSynStack call ShowSynStack()
 
-command! HideSynStack call HideSynStack()
 function! HideSynStack()
   let &statusline=g:old_statusline
   let &laststatus=g:old_laststatus
 endfunction
+command! -complete=command HideSynStack call HideSynStack()
 
-command! -range -nargs=1 SendToCommand <line1>,<line2>call SendToCommand(<q-args>)
 function! SendToCommand(UserCommand) range
   let SelectedLines = getline(a:firstline,a:lastline)
   " Convert to a single string suitable for passing to the command
@@ -185,8 +184,8 @@ function! SendToCommand(UserCommand) range
   " Run the command
   echo system(a:UserCommand, ScriptInput)
 endfunction
+command! -complete=command -range -nargs=1 SendToCommand <line1>,<line2>call SendToCommand(<q-args>)
 
-command! -range RunCommand <line1>,<line2>call RunCommand()
 fu! RunCommand() range
   let RunCommandCursorPos = getpos(".")
   let SelectedLines = getline(a:firstline,a:lastline)
@@ -195,4 +194,10 @@ fu! RunCommand() range
   echo system(ScriptInput)
   call setpos(".", RunCommandCursorPos)
 endfu
+command! -complete=command -range RunCommand <line1>,<line2>call RunCommand()
 map <unique> <leader>! :RunCommand<CR>
+
+function! StripTrailingWhitespace(line1, line2)
+  let _s=@/ | exe "normal! msHmt" | exe 'keepj '.a:line1.",".a:line2.'s/\s\+$//e' | let @/=_s | nohl | exe "normal! 'tzt`s"
+endfunction
+command! -range=% -complete=command StripTrailingWhitespace call StripTrailingWhitespace(<line1>, <line2>)

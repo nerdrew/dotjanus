@@ -24,7 +24,7 @@
 	url = git://github.com/kana/vim-textobj-user.git
 [submodule "greplace.vim"]
 	path = greplace.vim
-	url = git://github.com/vim-scripts/greplace.vim.git
+	url = git@github.com:nerdrew/greplace.vim.git
 [submodule "nginx-vim-syntax"]
 	path = nginx-vim-syntax
 	url = git://github.com/evanmiller/nginx-vim-syntax.git
@@ -57,4 +57,4 @@
 	url = git@github.com:nerdrew/vim-vroom.git
 [submodule "dart-vim-plugin"]
 	path = dart-vim-plugin
-	url = git@github.com:dart-lang/dart-vim-plugin.git
+	url = git@github.com:nerdrew/dart-vim-plugin.git
