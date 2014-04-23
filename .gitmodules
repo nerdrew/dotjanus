@@ -58,3 +58,6 @@
 [submodule "dart-vim-plugin"]
 	path = dart-vim-plugin
 	url = git@github.com:nerdrew/dart-vim-plugin.git
+[submodule "vim-golang"]
+	path = vim-golang
+	url = git@github.com:jnwhiteh/vim-golang.git

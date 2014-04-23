@@ -31,7 +31,7 @@ endif
 if has('autocmd')
   autocmd filetype python set expandtab sw=4 ts=4 sts=4
   autocmd filetype c set sw=4 ts=8 nolist
-  autocmd filetype vimwiki,markdown,txt set textwidth=0
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
   " Show trailing whitepace and spaces before a tab:
   "autocmd Syntax * syn match Error /\s\+$\| \+\ze\t/
