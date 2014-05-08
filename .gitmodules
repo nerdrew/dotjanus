@@ -61,3 +61,6 @@
 [submodule "vim-golang"]
 	path = vim-golang
 	url = git@github.com:jnwhiteh/vim-golang.git
+[submodule "vim-easy-align"]
+	path = vim-easy-align
+	url = https://github.com/junegunn/vim-easy-align.git
