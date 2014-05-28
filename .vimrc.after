@@ -61,31 +61,32 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-cmap <C-A> <Home>
-cmap <C-F> <Right>
-cmap <C-B> <Left>
-cmap <Esc>b <S-Left>
-cmap <Esc>f <S-Right>
-map <D-t> :tabnew<CR>
+cnoremap <C-A> <Home>
+cnoremap <C-F> <Right>
+cnoremap <C-B> <Left>
+cnoremap <Esc>b <S-Left>
+cnoremap <Esc>f <S-Right>
+"noremap <D-t> :tabnew<CR>
 
-map <unique> <leader>w :set wrap!<CR>:set wrap?<CR>
-map <unique> <leader>g :GundoToggle<CR>
-map <leader><space> :nohls<cr>
-map <leader>l :set list!<CR>:set list?<cr>
-map <leader>p <Plug>yankstack_substitute_older_paste
-map <leader>P <Plug>yankstack_substitute_newer_paste
-map <Leader>f :CommandT<CR>
 unmap <leader>fc
 unmap <leader>fef
 unmap <leader>tw
-map <leader>gn <ESC>/\v^[<=>]{7}( .*\|$)<CR>
-map <Leader>bb :CommandTBuffer<CR>
-map <leader>t :TagbarToggle<CR>
+unmap <leader>b
+noremap <unique> <leader>w :set wrap!<CR>:set wrap?<CR>
+noremap <unique> <leader>g :GundoToggle<CR>
+noremap <leader><space> :nohls<cr>
+noremap <leader>l :set list!<CR>:set list?<cr>
+noremap <leader>p <Plug>yankstack_substitute_older_paste
+noremap <leader>P <Plug>yankstack_substitute_newer_paste
+noremap <Leader>f :CommandT<CR>
+noremap <Leader>bb :CommandTMRU<CR>
+noremap <leader>t :TagbarToggle<CR>
+noremap <leader>gn <ESC>/\v^[<=>\|]{7}( .*\|$)<CR>
 "map <leader>d :BuffergatorToggle<CR>
-map <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
-map <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
-map <unique> <Leader>rc :CloseSingleConque<CR>
-map <C-@> @@
+noremap <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
+noremap <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
+noremap <unique> <Leader>rc :CloseSingleConque<CR>
+noremap <C-@> @@
 
 
 " Plugin options
@@ -106,6 +107,7 @@ let g:ruby_enable_balloons=0
 let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib"
 
 let g:vroom_use_binstubs=1
+let g:SuperTabDefaultCompletionType = "context"
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
