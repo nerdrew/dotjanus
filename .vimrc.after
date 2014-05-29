@@ -16,6 +16,7 @@ set backspace=indent,eol,start
 set copyindent
 "set listchars=tab:>\ ,trail:·,eol:$,nbsp:·,extends:>,precedes:<
 set listchars=tab:>\ ,trail:·,nbsp:·,extends:>,precedes:<
+set nolist
 set noswapfile
 set ssop-=options
 set ssop-=folds
@@ -72,10 +73,10 @@ unmap <leader>fc
 unmap <leader>fef
 unmap <leader>tw
 unmap <leader>b
-noremap <unique> <leader>w :set wrap!<CR>:set wrap?<CR>
+noremap <unique> <leader>w :set wrap! wrap?<CR>
 noremap <unique> <leader>g :GundoToggle<CR>
 noremap <leader><space> :nohls<cr>
-noremap <leader>l :set list!<CR>:set list?<cr>
+noremap <leader>l :set list! list?<cr>
 noremap <leader>p <Plug>yankstack_substitute_older_paste
 noremap <leader>P <Plug>yankstack_substitute_newer_paste
 noremap <Leader>f :CommandT<CR>
@@ -203,3 +204,14 @@ function! StripTrailingWhitespace(line1, line2)
   let _s=@/ | exe "normal! msHmt" | exe 'keepj '.a:line1.",".a:line2.'s/\s\+$//e' | let @/=_s | nohl | exe "normal! 'tzt`s"
 endfunction
 command! -range=% -complete=command StripTrailingWhitespace call StripTrailingWhitespace(<line1>, <line2>)
+
+function! ToggleDiffIgnoreWhitespace()
+  if match(&diffopt, 'iwhite') == -1
+    set diffopt+=iwhite
+  else
+    set diffopt-=iwhite
+  endif
+  set diffopt?
+endfunction
+command! -complete=command ToggleDiffIgnoreWhitespace call ToggleDiffIgnoreWhitespace()
+noremap <unique> <leader>W :ToggleDiffIgnoreWhitespace<CR>
