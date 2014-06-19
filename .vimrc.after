@@ -3,7 +3,7 @@ if has("gui_running")
   set guioptions-=r    " hide scrollbars on right
   set guioptions-=L    " hide scrollbars on left
   let g:vroom_use_dispatch = 1
-else
+elseif $TMUX != ''
   let g:vroom_use_vimux = 1
 endif
 
@@ -101,7 +101,6 @@ let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*
 "let g:buffergator_suppress_keymaps=1
 
 let g:syntastic_quiet_warnings=1
-let g:syntastic_ruby_exec="default-ruby"
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
 "let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['c'] }
 
@@ -111,7 +110,6 @@ let g:ruby_enable_balloons=0
 let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib"
 
 let g:vroom_use_binstubs=1
-let g:SuperTabDefaultCompletionType = "context"
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
