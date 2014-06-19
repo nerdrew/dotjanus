@@ -67,3 +67,6 @@
 [submodule "vimux"]
 	path = vimux
 	url = git@github.com:benmills/vimux.git
+[submodule "vim-addon-local-vimrc"]
+	path = vim-addon-local-vimrc
+	url = git@github.com:nerdrew/vim-addon-local-vimrc.git
