@@ -70,3 +70,6 @@
 [submodule "vim-addon-local-vimrc"]
 	path = vim-addon-local-vimrc
 	url = git@github.com:nerdrew/vim-addon-local-vimrc.git
+[submodule "vim-syntastic"]
+	path = vim-syntastic
+	url = git@github.com:nerdrew/syntastic.git
