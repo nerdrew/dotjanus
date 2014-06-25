@@ -73,3 +73,6 @@
 [submodule "vim-syntastic"]
 	path = vim-syntastic
 	url = git@github.com:nerdrew/syntastic.git
+[submodule "rust.vim"]
+	path = rust.vim
+	url = git://github.com/wting/rust.vim.git
