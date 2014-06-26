@@ -16,9 +16,6 @@
 [submodule "vim-textobj-rubyblock"]
 	path = vim-textobj-rubyblock
 	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
-[submodule "Flex-Development-Support"]
-	path = Flex-Development-Support
-	url = https://github.com/vim-scripts/Flex-Development-Support.git
 [submodule "vim-textobj-user"]
 	path = vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
