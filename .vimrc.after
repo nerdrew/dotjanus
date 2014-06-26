@@ -3,6 +3,7 @@ if has("gui_running")
   set guioptions-=r    " hide scrollbars on right
   set guioptions-=L    " hide scrollbars on left
   let g:vroom_use_dispatch = 1
+  set macmeta
 elseif $TMUX != ''
   let g:vroom_use_vimux = 1
 endif
@@ -80,8 +81,8 @@ noremap <unique> <leader>w :set wrap! wrap?<CR>
 noremap <unique> <leader>g :GundoToggle<CR>
 noremap <leader><space> :nohls<cr>
 noremap <leader>l :set list! list?<cr>
-noremap <leader>p <Plug>yankstack_substitute_older_paste
-noremap <leader>P <Plug>yankstack_substitute_newer_paste
+nmap <leader>p <Plug>yankstack_substitute_older_paste<cr>
+nmap <leader>P <Plug>yankstack_substitute_newer_paste<cr>
 noremap <Leader>f :CommandT<CR>
 noremap <Leader>bb :CommandTMRU<CR>
 noremap <leader>t :TagbarToggle<CR>
@@ -91,7 +92,6 @@ noremap <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
 noremap <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
 noremap <unique> <Leader>rc :CloseSingleConque<CR>
 noremap <C-@> @@
-
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
