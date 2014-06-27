@@ -52,8 +52,6 @@ if has('autocmd')
   autocmd BufWritePre *.{rb,erb,h,m,haml,js,html,coffee,json} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
 endif
 
-" Call yankstack BEFORE my keyboard remappings
-call yankstack#setup()
 """""""""""""""""""""""""""""""""
 " Keyboard mappings
 """""""""""""""""""""""""""""""""
@@ -81,8 +79,6 @@ noremap <unique> <leader>w :set wrap! wrap?<CR>
 noremap <unique> <leader>g :GundoToggle<CR>
 noremap <leader><space> :nohls<cr>
 noremap <leader>l :set list! list?<cr>
-nmap <leader>p <Plug>yankstack_substitute_older_paste<cr>
-nmap <leader>P <Plug>yankstack_substitute_newer_paste<cr>
 noremap <Leader>f :CommandT<CR>
 noremap <Leader>bb :CommandTMRU<CR>
 noremap <leader>t :TagbarToggle<CR>
@@ -96,9 +92,6 @@ noremap <C-@> @@
 " Plugin options
 let g:CommandTMatchWindowReverse=1
 let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*,**/packages/*"
-"let g:buffergator_viewport_split_policy="B"
-"let g:buffergator_split_size=0
-"let g:buffergator_suppress_keymaps=1
 
 let g:syntastic_quiet_warnings=1
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
@@ -106,8 +99,6 @@ let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not r
 
 " disable ruby balloon eval
 let g:ruby_enable_balloons=0
-
-let g:clang_library_path="/Library/Developer/CommandLineTools/usr/lib"
 
 let g:vroom_use_binstubs=1
 

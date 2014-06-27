@@ -4,6 +4,7 @@ call janus#disable_plugin('ctrlp')
 "call janus#disable_plugin('dispatch')
 "call janus#disable_plugin('rspec')
 call janus#disable_plugin('snipmate')
+call janus#disable_plugin('supertab')
 call janus#disable_plugin('syntastic')
 call janus#disable_plugin('tlib')
 call janus#disable_plugin('vim-addon-mw-utils')
@@ -13,6 +14,7 @@ call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('vroom')
 
 " Plugin options that need to be loaded before the plugins are
-" remember localvimrc allows
-" localvimrc updates viminfo+=1 b/c nothing else worked
-"let g:localvimrc_persistent = 1
+
+let g:yankring_clipboard_monitor = 0
+let g:yankring_replace_n_pkey = '<m-p>'
+let g:yankring_replace_n_nkey = '<m-n>'
