@@ -82,7 +82,7 @@ noremap <leader>l :set list! list?<cr>
 noremap <Leader>f :CommandT<CR>
 noremap <Leader>bb :CommandTMRU<CR>
 noremap <leader>t :TagbarToggle<CR>
-noremap <leader>gn <ESC>/\v^[<=>\|]{7}( .*\|$)<CR>
+"noremap <leader>gn <ESC>/\v^[<=>\|]{7}( .*\|$)<CR>
 "map <leader>d :BuffergatorToggle<CR>
 noremap <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
 noremap <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
