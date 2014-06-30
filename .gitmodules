@@ -58,9 +58,6 @@
 [submodule "rust.vim"]
 	path = rust.vim
 	url = git://github.com/wting/rust.vim.git
-[submodule "YouCompleteMe"]
-	path = YouCompleteMe
-	url = git@github.com:Valloric/YouCompleteMe.git
 [submodule "YankRing.vim"]
 	path = YankRing.vim
 	url = git@github.com:vim-scripts/YankRing.vim.git
