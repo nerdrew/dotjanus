@@ -92,6 +92,7 @@ noremap <C-@> @@
 " Plugin options
 let g:CommandTMatchWindowReverse=1
 let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*,**/packages/*"
+let g:CommandTFileScanner='find'
 
 let g:syntastic_quiet_warnings=1
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
@@ -208,3 +209,9 @@ function! ToggleDiffIgnoreWhitespace()
 endfunction
 command! -complete=command ToggleDiffIgnoreWhitespace call ToggleDiffIgnoreWhitespace()
 noremap <silent> <unique> <leader>W :ToggleDiffIgnoreWhitespace<CR>
+
+function! Dartfmt()
+  %!dartfmt -l 100 -t
+  exe "normal! GGdd"
+endfunction
+command! -complete=command Dartfmt call Dartfmt()
