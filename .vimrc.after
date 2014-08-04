@@ -49,7 +49,7 @@ if has('autocmd')
   autocmd BufRead,BufNewFile *.as set filetype=actionscript
 
   " Remove trailing whitespace on save
-  autocmd BufWritePre *.{rb,erb,h,m,haml,js,html,coffee,json} let _s=@/ | exe "normal! msHmt" | keepj %s/\s\+$//e | let @/=_s | nohl | exe "normal! 'tzt`s"
+  autocmd BufWritePre *.{java,proto,rb,erb,h,m,haml,js,html,coffee,json} StripTrailingWhitespace
 endif
 
 """""""""""""""""""""""""""""""""
@@ -215,3 +215,11 @@ function! Dartfmt()
   exe "normal! GGdd"
 endfunction
 command! -complete=command Dartfmt call Dartfmt()
+
+function! DefaultFont()
+  set guifont=Menlo:h11
+endfunction
+command! -complete=command DefaultFont call DefaultFont()
+
+" Load local-vimrc
+exec 'source ' . g:janus_custom_path . '/vim-addon-local-vimrc/plugin/localvimrc.vim'

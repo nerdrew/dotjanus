@@ -9,6 +9,7 @@ call janus#disable_plugin('vim-snippets')
 call janus#disable_plugin('vim-trailing-whitespace')
 call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('vroom')
+call janus#disable_plugin('vim-addon-local-vimrc')
 
 " Plugin options that need to be loaded before the plugins are
 
