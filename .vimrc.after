@@ -103,6 +103,8 @@ let g:ruby_enable_balloons=0
 
 let g:vroom_use_binstubs=1
 
+let g:bufExplorerShowRelativePath=1
+
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
 function! TabMessage(cmd)
