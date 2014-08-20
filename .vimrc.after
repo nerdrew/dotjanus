@@ -24,6 +24,8 @@ set nolist
 set noswapfile
 set ssop-=options
 set ssop-=folds
+set csre
+set cscopequickfix=s-,c-,d-,i-,t-,e-
 
 set statusline+=%{SyntasticStatuslineFlag()}
 
@@ -88,6 +90,7 @@ noremap <unique> <Leader>cr :RunRspecCurrentFileConque<CR>
 noremap <unique> <Leader>cR :RunRspecCurrentLineConque<CR>
 noremap <unique> <Leader>rc :CloseSingleConque<CR>
 noremap <C-@> @@
+nmap <C-\> :call CscopeForTermUnderCursor()<CR>
 
 " Plugin options
 let g:CommandTMatchWindowReverse=1
@@ -222,6 +225,23 @@ function! DefaultFont()
   set guifont=Menlo:h11
 endfunction
 command! -complete=command DefaultFont call DefaultFont()
+
+function! CscopeForTermUnderCursor()
+  call inputsave()
+  let type = ''
+  let validTypes = ['d', 'c', 'g', 's', 't']
+  let quitTypes = ['q', '', '']
+  echo 'cscope find type (d=called/c=calling/g=definition/s=symbol/t=text/q=quit): '
+  while index(validTypes, type) == -1
+    let type = nr2char(getchar())
+    if index(quitTypes, type) >= 0
+      return
+    endif
+  endwhile
+  let search = expand('<cword>')
+  call inputrestore()
+  execute 'cs find '.type.' '.search
+endfunction
 
 " Load local-vimrc
 exec 'source ' . g:janus_custom_path . '/vim-addon-local-vimrc/plugin/localvimrc.vim'
