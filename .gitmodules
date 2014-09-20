@@ -57,7 +57,7 @@
 	url = git@github.com:nerdrew/syntastic.git
 [submodule "rust.vim"]
 	path = rust.vim
-	url = git://github.com/wting/rust.vim.git
+	url = git://github.com/nerdrew/rust.vim.git
 [submodule "YankRing.vim"]
 	path = YankRing.vim
 	url = git@github.com:vim-scripts/YankRing.vim.git
