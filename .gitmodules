@@ -34,9 +34,6 @@
 [submodule "ag.vim"]
 	path = ag.vim
 	url = git://github.com/rking/ag.vim.git
-[submodule "vim-vroom"]
-	path = vim-vroom
-	url = git@github.com:nerdrew/vim-vroom.git
 [submodule "dart-vim-plugin"]
 	path = dart-vim-plugin
 	url = git@github.com:nerdrew/dart-vim-plugin.git
