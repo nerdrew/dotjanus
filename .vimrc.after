@@ -256,7 +256,7 @@ function! RunRubyTest(single)
     let s:spec_line = line('.')
   endif
 
-  if !exists(s:spec_file)
+  if !exists('s:spec_file')
     let s:spec_file = '%'
   endif
 
