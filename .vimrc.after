@@ -237,17 +237,29 @@ function! CscopeForTermUnderCursor()
   execute 'cs find '.type.' '.search
 endfunction
 
-
 " Rspec runner
-if !exists('g:rspec')
-  let g:rspec = 'bundle exec rspec'
-endif
 let g:dispatch_compilers = {'bundle exec': '', 'bin/rspec': 'rspec', 'bin/rake': 'rake', 'zeus': ''}
 
 function! RunRubyTest(single)
-  let cmd = ':Dispatch ' . g:rspec . ' -f p %'
+  if exists('g:rspec')
+    let rspec = g:rspec
+  elseif glob('.zeus.sock') == '.zeus.sock'
+    let rspec = 'zeus rspec'
+  elseif glob('bin/rspec') == 'bin/rspec'
+    let rspec = 'bin/rspec'
+  else
+    let rspec = 'bundle exec rspec'
+  endif
+
+  if match(expand('%'), '_spec.rb$') > -1
+    let s:spec_file = expand('%')
+    let s:spec_line = line('.')
+  endif
+
+  let cmd = ':Dispatch ' . rspec . ' -f p ' . s:spec_file
+
   if a:single
-    let cmd.= ':'. line('.')
+    let cmd.= ':'. s:spec_line
   endif
   exe cmd
 endfunction
