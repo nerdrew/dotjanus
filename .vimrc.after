@@ -82,7 +82,6 @@ noremap <Leader>f :CommandT<CR>
 noremap <Leader>bb :CommandTMRU<CR>
 noremap <leader>t :TagbarToggle<CR>
 "noremap <leader>gn <ESC>/\v^[<=>\|]{7}( .*\|$)<CR>
-"map <leader>d :BuffergatorToggle<CR>
 noremap <C-@> @@
 nmap <C-\> :call CscopeForTermUnderCursor()<CR>
 
