@@ -33,8 +33,8 @@ if has('balloon_eval')
 endif
 
 if has('autocmd')
-  autocmd filetype python set expandtab sw=4 ts=4 sts=4
-  autocmd filetype c set sw=4 ts=8 nolist
+  autocmd filetype python setlocal expandtab sw=4 ts=4 sts=4
+  autocmd filetype c setlocal sw=4 ts=8 nolist
   autocmd FileType go autocmd BufWritePre <buffer> Fmt
 
   " Show trailing whitepace and spaces before a tab:
@@ -98,6 +98,8 @@ let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not r
 let g:ruby_enable_balloons=0
 
 let g:bufExplorerShowRelativePath=1
+
+let g:dispatch_compilers = {'bundle exec': '', 'bin/rspec': 'rspec', 'bin/rake': 'rake', 'zeus': ''}
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
@@ -208,12 +210,6 @@ endfunction
 command! -complete=command ToggleDiffIgnoreWhitespace call ToggleDiffIgnoreWhitespace()
 noremap <silent> <unique> <leader>W :ToggleDiffIgnoreWhitespace<CR>
 
-function! Dartfmt()
-  %!dartfmt -l 100 -t
-  exe "normal! GGdd"
-endfunction
-command! -complete=command Dartfmt call Dartfmt()
-
 function! DefaultFont()
   set guifont=Menlo:h11
 endfunction
@@ -235,40 +231,6 @@ function! CscopeForTermUnderCursor()
   call inputrestore()
   execute 'cs find '.type.' '.search
 endfunction
-
-" Rspec runner
-let g:dispatch_compilers = {'bundle exec': '', 'bin/rspec': 'rspec', 'bin/rake': 'rake', 'zeus': ''}
-
-function! RunRubyTest(single)
-  if exists('g:rspec')
-    let rspec = g:rspec
-  elseif glob('.zeus.sock') == '.zeus.sock'
-    let rspec = 'zeus rspec'
-  elseif glob('bin/rspec') == 'bin/rspec'
-    let rspec = 'bin/rspec'
-  else
-    let rspec = 'bundle exec rspec'
-  endif
-
-  if match(expand('%'), '_spec.rb$') > -1
-    let s:spec_file = expand('%')
-    let s:spec_line = line('.')
-  endif
-
-  if !exists('s:spec_file')
-    let s:spec_file = '%'
-  endif
-
-  let cmd = ':Dispatch ' . rspec . ' -f p ' . s:spec_file
-
-  if a:single
-    let cmd.= ':'. s:spec_line
-  endif
-  exe cmd
-endfunction
-command! -complete=command -nargs=? RunRubyTest call RunRubyTest(<q-args>)
-noremap <silent> <unique> <leader>r :RunRubyTest<CR>
-noremap <silent> <unique> <leader>R :RunRubyTest 1<CR>
 
 " Load local-vimrc
 exec 'source ' . g:janus_custom_path . '/vim-addon-local-vimrc/plugin/localvimrc.vim'
