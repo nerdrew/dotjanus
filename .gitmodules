@@ -1,54 +1,76 @@
 [submodule "securemodelines"]
 	path = securemodelines
 	url = https://github.com/ciaranm/securemodelines.git
+  ignore = dirty
 [submodule "vim-surround"]
 	path = vim-surround
 	url = http://github.com/tpope/vim-surround.git
+  ignore = dirty
 [submodule "vim-repeat"]
 	path = vim-repeat
 	url = http://github.com/tpope/vim-repeat.git
+  ignore = dirty
 [submodule "vim-textobj-rubyblock"]
 	path = vim-textobj-rubyblock
 	url = git://github.com/nelstrom/vim-textobj-rubyblock.git
+  ignore = dirty
 [submodule "vim-textobj-user"]
 	path = vim-textobj-user
 	url = git://github.com/kana/vim-textobj-user.git
+  ignore = dirty
 [submodule "greplace.vim"]
 	path = greplace.vim
 	url = git@github.com:nerdrew/greplace.vim.git
+  ignore = dirty
 [submodule "nginx-vim-syntax"]
 	path = nginx-vim-syntax
 	url = git://github.com/evanmiller/nginx-vim-syntax.git
+  ignore = dirty
 [submodule "Command-T"]
 	path = Command-T
 	url = git://github.com/wincent/Command-T.git
+  ignore = dirty
 [submodule "vim-stylus"]
 	path = vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
+  ignore = dirty
 [submodule "vim-markdown"]
 	path = vim-markdown
 	url = git://github.com/tpope/vim-markdown.git
+  ignore = dirty
 [submodule "ag.vim"]
 	path = ag.vim
 	url = git://github.com/rking/ag.vim.git
+  ignore = dirty
 [submodule "dart-vim-plugin"]
 	path = dart-vim-plugin
 	url = git@github.com:nerdrew/dart-vim-plugin.git
+  ignore = dirty
 [submodule "vim-golang"]
 	path = vim-golang
 	url = git@github.com:jnwhiteh/vim-golang.git
+  ignore = dirty
 [submodule "vimux"]
 	path = vimux
 	url = git@github.com:benmills/vimux.git
+  ignore = dirty
 [submodule "vim-addon-local-vimrc"]
 	path = vim-addon-local-vimrc
 	url = git@github.com:nerdrew/vim-addon-local-vimrc.git
+  ignore = dirty
 [submodule "vim-syntastic"]
 	path = vim-syntastic
 	url = git@github.com:nerdrew/syntastic.git
+  ignore = dirty
 [submodule "rust.vim"]
 	path = rust.vim
 	url = git://github.com/nerdrew/rust.vim.git
+  ignore = dirty
 [submodule "YankRing.vim"]
 	path = YankRing.vim
 	url = git@github.com:vim-scripts/YankRing.vim.git
+  ignore = dirty
+[submodule "vim-toml"]
+	path = vim-toml
+	url = git@github.com:cespare/vim-toml.git
+  ignore = dirty
