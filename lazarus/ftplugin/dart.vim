@@ -10,5 +10,5 @@ endfunction
 command! -complete=command Dartfmt call Dartfmt()
 
 if has('autocmd')
-  autocmd FileType dart autocmd BufWritePre <buffer> Dartfmt
+  "autocmd FileType dart autocmd BufWritePre <buffer> Dartfmt
 endif
