@@ -24,7 +24,7 @@ function! RunMvnTest(single)
   if a:single
     let cmd.= ' -Dtest='. s:test_file
   endif
-  exe cmd . ' | ' . s:output_converter
+  update | exe cmd . ' | ' . s:output_converter
 endfunction
 command! -complete=command -nargs=? RunMvnTest call RunMvnTest(<q-args>)
 noremap <buffer> <silent> <unique> <leader>r :RunMvnTest<CR>

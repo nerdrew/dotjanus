@@ -3,6 +3,7 @@ if has("gui_running")
   set guioptions-=r    " hide scrollbars on right
   set guioptions-=L    " hide scrollbars on left
   set macmeta
+  colorscheme solarized
 endif
 
 set guifont=Menlo:h11

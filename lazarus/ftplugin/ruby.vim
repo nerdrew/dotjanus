@@ -28,7 +28,7 @@ function! RunRubyTest(single)
   if a:single
     let cmd.= ':'. s:spec_line
   endif
-  exe cmd
+  update | exe cmd
 endfunction
 command! -complete=command -nargs=? RunRubyTest call RunRubyTest(<q-args>)
 noremap <buffer> <silent> <unique> <leader>r :RunRubyTest<CR>
