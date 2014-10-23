@@ -1,15 +1,16 @@
 call janus#disable_plugin('ack')
 call janus#disable_plugin('buffergator')
 call janus#disable_plugin('ctrlp')
+call janus#disable_plugin('dispatch')
 call janus#disable_plugin('snipmate')
 call janus#disable_plugin('syntastic')
 call janus#disable_plugin('tlib')
+call janus#disable_plugin('vim-addon-local-vimrc')
 call janus#disable_plugin('vim-addon-mw-utils')
 call janus#disable_plugin('vim-snippets')
 call janus#disable_plugin('vim-trailing-whitespace')
 call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('vroom')
-call janus#disable_plugin('vim-addon-local-vimrc')
 
 " Plugin options that need to be loaded before the plugins are
 
