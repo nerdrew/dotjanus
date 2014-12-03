@@ -4,8 +4,7 @@ endif
 let b:lazarus_dart = 1
 
 function! Dartfmt()
-  %!dartfmt -l 100 -t
-  exe "normal! GGdd"
+  exe "normal! msHmt" | exe 'keepj %!dartfmt -l 100 -t' | exe 'keepj normal! GGdd' | exe "normal! 'tzt`s"
 endfunction
 command! -complete=command Dartfmt call Dartfmt()
 
