@@ -34,10 +34,6 @@
 	path = vim-stylus
 	url = git://github.com/wavded/vim-stylus.git
   ignore = dirty
-[submodule "vim-markdown"]
-	path = vim-markdown
-	url = git://github.com/tpope/vim-markdown.git
-  ignore = dirty
 [submodule "ag.vim"]
 	path = ag.vim
 	url = git://github.com/rking/ag.vim.git
