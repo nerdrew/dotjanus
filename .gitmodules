@@ -73,3 +73,6 @@
 [submodule "vim-dispatch"]
 	path = vim-dispatch
 	url = git@github.com:nerdrew/vim-dispatch.git
+[submodule "neomake"]
+	path = neomake
+	url = git@github.com:benekastah/neomake.git
