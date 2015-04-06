@@ -91,7 +91,8 @@ nmap <C-\> :call CscopeForTermUnderCursor()<CR>
 " Plugin options
 let g:CommandTMatchWindowReverse=1
 let g:CommandTWildIgnore=&wildignore . ",**/bower_components/*,**/node_modules/*,**/packages/*"
-let g:CommandTFileScanner='find'
+let g:CommandTFileScanner='git'
+let g:CommandTTraverseSCM='pwd'
 
 let g:syntastic_quiet_warnings=1
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
