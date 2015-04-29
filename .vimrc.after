@@ -26,6 +26,7 @@ set ssop-=options
 set ssop-=folds
 set csre
 set cscopequickfix=s-,c-,d-,i-,t-,e-
+set showcmd
 
 set statusline+=%{SyntasticStatuslineFlag()}
 
