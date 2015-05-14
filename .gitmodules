@@ -76,3 +76,6 @@
 [submodule "neomake"]
 	path = neomake
 	url = git@github.com:benekastah/neomake.git
+[submodule "vim-capnp"]
+	path = vim-capnp
+	url = git@github.com:cstrahan/vim-capnp.git
