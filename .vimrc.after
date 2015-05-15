@@ -106,6 +106,8 @@ let g:bufExplorerShowRelativePath=1
 
 let g:dispatch_compilers = {'bundle exec': '', 'bin/rspec': 'rspec', 'bin/rake': 'rake', 'zeus': ''}
 
+let g:ag_prg="ag --vimgrep --smart-case"
+
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
 function! TabMessage(cmd)
