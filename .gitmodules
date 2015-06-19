@@ -79,3 +79,6 @@
 [submodule "vim-capnp"]
 	path = vim-capnp
 	url = git@github.com:cstrahan/vim-capnp.git
+[submodule "racer"]
+	path = racer
+	url = git@github.com:phildawes/racer.git
