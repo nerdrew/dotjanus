@@ -16,6 +16,11 @@ call janus#disable_plugin('vimwiki')
 call janus#disable_plugin('vroom')
 call janus#disable_plugin('zoomwin')
 
+if has('nvim')
+  call janus#disable_plugin('vim-dispatch')
+  call janus#disable_plugin('Command-T')
+endif
+
 " Plugin options that need to be loaded before the plugins are
 
 let g:yankring_clipboard_monitor = 0

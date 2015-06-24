@@ -3,6 +3,10 @@ if exists("b:lazarus_ruby")
 endif
 let b:lazarus_ruby = 1
 
+if !exists('g:rspec_runner')
+  let g:rspec_runner = 'NeomakeSh'
+endif
+
 function! RunRubyTest(single)
   if exists('g:rspec')
     let rspec = g:rspec
@@ -23,7 +27,7 @@ function! RunRubyTest(single)
     let s:spec_file = '%'
   endif
 
-  let cmd = ':Dispatch ' . rspec . ' -f p ' . s:spec_file
+  let cmd = ':'. g:rspec_runner .' ' . rspec . ' -f p ' . s:spec_file
 
   if a:single
     let cmd.= ':'. s:spec_line
