@@ -106,24 +106,19 @@ else
   let g:CommandTFileScanner='find'
   let g:CommandTTraverseSCM='pwd'
   let g:dispatch_compilers = {'bundle exec': '', 'bin/rspec': 'rspec', 'bin/rake': 'rake', 'zeus': ''}
-  let g:rspec_runner = 'Dispatch'
+  let g:rspec_runner = 'Make!'
 endif
 
-" Plugin options
 let g:syntastic_quiet_warnings=1
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
-"let g:syntastic_mode_map = { 'mode': 'active', 'active_filetypes': [], 'passive_filetypes': ['c'] }
-
-" disable ruby balloon eval
 let g:ruby_enable_balloons=0
-
 let g:bufExplorerShowRelativePath=1
-
 let g:ag_prg="ag --vimgrep --smart-case"
-
 let g:racer_cmd="./target/release/racer"
-
 let g:gitgutter_enabled = 0
+let g:neomake_serialize = 1
+let g:neomake_open_list = 1
+let g:neomake_makeprg_remove_invalid_entries = 0
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
