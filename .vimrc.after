@@ -93,7 +93,7 @@ nmap <C-\> :call CscopeForTermUnderCursor()<CR>
 
 if has('nvim')
   noremap <leader>f :FZF<CR>
-  vnoremap <unique> <leader>c "+ygv
+  vnoremap <unique> <leader>y "+y
 else
   " rm command-t buffer map
   unmap <leader>b
