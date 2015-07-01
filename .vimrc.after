@@ -4,6 +4,11 @@ if has("gui_running")
   set guioptions-=L    " hide scrollbars on left
   set macmeta
   colorscheme solarized
+  if has('balloon_eval')
+    set noballooneval
+    set balloondelay=100000
+    autocmd FileType ruby setlocal balloonexpr=
+  endif
 else
   set mouse=a
 endif
@@ -18,7 +23,6 @@ set history=1000
 set ruler
 set backspace=indent,eol,start
 set copyindent
-"set listchars=tab:>\ ,trail:·,eol:$,nbsp:·,extends:>,precedes:<
 set listchars=tab:>\ ,trail:·,nbsp:·,extends:>,precedes:<
 set nolist
 set noswapfile
@@ -27,14 +31,9 @@ set ssop-=folds
 set csre
 set cscopequickfix=s-,c-,d-,i-,t-,e-
 set showcmd
+set numberwidth=3
 
 set statusline+=%{SyntasticStatuslineFlag()}
-
-if has('balloon_eval')
-  set noballooneval
-  set balloondelay=100000
-  autocmd FileType ruby setlocal balloonexpr=
-endif
 
 if has('autocmd')
   autocmd filetype python setlocal expandtab sw=4 ts=4 sts=4
@@ -67,12 +66,10 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
-cnoremap <C-A> <Home>
-cnoremap <C-F> <Right>
-cnoremap <C-B> <Left>
-cnoremap <Esc>b <S-Left>
-cnoremap <Esc>f <S-Right>
-"noremap <D-t> :tabnew<CR>
+" alt-[
+noremap “ :tabp<CR>
+" alt-]
+noremap ‘ :tabn<CR>
 
 " unmap stupid janus
 unmap <leader>fc
