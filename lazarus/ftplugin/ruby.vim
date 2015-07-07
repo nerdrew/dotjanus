@@ -36,7 +36,7 @@ function! RunRubyTest(single)
   " Match file:line message, ignore lines: ^\.|F$, ignore blank / whitespace
   " lines
   let &l:efm = 'rspec %f:%l %m, %-G%*[.F], %-G\\s%#'
-  update | exe g:rspec_runner
+  update | exe g:rspec_runner | echo "running: " . cmd
 endfunction
 command! -complete=command -nargs=? RunRubyTest call RunRubyTest(<q-args>)
 noremap <buffer> <silent> <unique> <leader>r :RunRubyTest<CR>

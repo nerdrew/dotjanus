@@ -24,6 +24,4 @@ endif
 " Plugin options that need to be loaded before the plugins are
 
 let g:yankring_clipboard_monitor = 0
-let g:yankring_replace_n_pkey = '<m-p>'
-let g:yankring_replace_n_nkey = '<m-n>'
 let g:yankring_history_file = '.vim_yankring_history'
