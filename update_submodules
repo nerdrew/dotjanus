@@ -1,3 +1,9 @@
 #!/usr/bin/env zsh
 
-git submodule foreach 'if $(git remote -v | grep -q upstream) ; then git checkout master && git pull --ff-only && git pull --rebase upstream master; else git checkout master && git pull --rebase; fi'
+git submodule foreach '
+  if $(git remote -v | grep -q upstream) ; then
+    git fresh upstream/master
+  else
+    git fresh
+  fi
+'
