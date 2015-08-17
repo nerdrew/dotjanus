@@ -3,10 +3,6 @@ if exists("b:lazarus_ruby")
 endif
 let b:lazarus_ruby = 1
 
-if !exists('g:rspec_runner')
-  let g:rspec_runner = 'Neomake!'
-endif
-
 function! RunRubyTest(single)
   if exists('g:rspec')
     let rspec = g:rspec
@@ -32,11 +28,16 @@ function! RunRubyTest(single)
   if a:single
     let cmd.= ':'. s:spec_line
   endif
-  let &l:makeprg = cmd
+
   " Match file:line message, ignore lines: ^\.|F$, ignore blank / whitespace
   " lines
-  let &l:efm = 'rspec %f:%l %m, %-G%*[.F], %-G\\s%#'
-  update | exe g:rspec_runner | echo "running: " . cmd
+  "let &l:efm = 'rspec %f:%l %m, %-G%*[.F], %-G\\s%#'
+  let custom_maker = neomake#utils#MakerFromCommand(&shell, cmd)
+  let custom_maker.name = cmd
+  let custom_maker.remove_invalid_entries = 0
+  let custom_maker.errorformat = 'rspec %f:%l %m, %-G%*[.F], %-G\\s%#'
+  let enabled_makers =  [custom_maker]
+  update | call neomake#Make({'enabled_makers': enabled_makers, 'file_mode': 1}) | echo "running: " . cmd
 endfunction
 command! -complete=command -nargs=? RunRubyTest call RunRubyTest(<q-args>)
 noremap <buffer> <silent> <unique> <leader>r :RunRubyTest<CR>

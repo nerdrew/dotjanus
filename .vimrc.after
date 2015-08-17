@@ -85,6 +85,7 @@ unmap <leader>gd
 unmap <leader>gl
 unmap <leader>gc
 unmap <leader>gp
+unmap <leader>rt
 
 noremap <unique> <leader>w :set wrap! wrap?<CR>
 noremap <unique> <leader>g :GundoToggle<CR>
@@ -114,12 +115,23 @@ let g:syntastic_quiet_warnings=1
 let g:syntastic_html_tidy_ignore_errors=['proprietary attribute "ng-', 'is not recognized!']
 let g:ruby_enable_balloons=0
 let g:bufExplorerShowRelativePath=1
-let g:ag_prg="ag --vimgrep --smart-case"
 let g:racer_cmd="./target/release/racer"
 let g:gitgutter_enabled = 0
 let g:neomake_serialize = 1
 let g:neomake_open_list = 1
 let g:neomake_makeprg_remove_invalid_entries = 0
+
+function! s:Ag(file_mode, args)
+  let cmd = "ag --vimgrep --smart-case ".a:args
+  let custom_maker = neomake#utils#MakerFromCommand(&shell, cmd)
+  let custom_maker.name = cmd
+  let custom_maker.remove_invalid_entries = 0
+  let custom_maker.place_signs = 0
+  let enabled_makers =  [custom_maker]
+  call neomake#Make({'enabled_makers': enabled_makers, 'file_mode': a:file_mode}) | echo "running: " . cmd
+endfunction
+
+command! -bang -nargs=* -complete=file Ag call s:Ag(<bang>1, <q-args>)
 
 " From http://vim.wikia.com/wiki/Capture_ex_command_output
 " Captures ex command and puts it in a new tab
