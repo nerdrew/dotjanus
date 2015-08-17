@@ -70,6 +70,10 @@ nnoremap <C-l> <C-w>l
 noremap “ :tabp<CR>
 " alt-]
 noremap ‘ :tabn<CR>
+" alt-shift-[
+noremap ” :tabm -1<CR>
+" alt-shift-]
+noremap ’ :tabm +1<CR>
 
 " unmap stupid janus
 unmap <leader>fc
